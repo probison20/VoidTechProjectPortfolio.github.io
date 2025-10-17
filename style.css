@@ -14,7 +14,7 @@ body{
 #header{
     width: 100%;
     height: 100vh;
-    background-image: url(images/Main_BG.png);
+    background-image: url(Images/Main_BG.png);
     background-size: cover;
     background-position: center;
 }
@@ -408,4 +408,5 @@ body.subpage {
 .about-col-3 p {
     text-align: center;
     margin-top: 10px;   /* optional spacing from images */
+
 }
