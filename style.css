@@ -320,11 +320,21 @@ form .btn2{
 /*-----------Work page-----------*/
 /* Only affects nav on subpages */
 /* Subpages: align left, no negative offset */
-body.subpage {
+body.subpage.work-page{
     background-color: #000; /* main background */
     background-image: 
         linear-gradient(to right, #B0007E33 10%, transparent 30%),
         linear-gradient(to left, #B0007E33 10%, transparent 30%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+body.subpage.book-page{
+    background-color: #000; /* main background */
+    background-image: 
+        linear-gradient(to right, #B0007E33 10%, transparent 30%),
+        linear-gradient(to left, #00c3ff33 10%, transparent 30%);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     color: #fff;
