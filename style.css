@@ -409,3 +409,10 @@ body.subpage {
     text-align: center;
     margin-top: 10px;   /* optional spacing from images */
 }
+.highlight-link {
+    color: #B0007E;  
+    font-weight: bold;
+}
+.highlight-link:hover {
+    color: #FFD700;   /* gold on hover */
+}
