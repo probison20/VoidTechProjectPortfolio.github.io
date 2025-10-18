@@ -10,16 +10,19 @@
 </head>
 <body>
 <div id="header">
+    <img src="Images/WebBGFinal.png" alt="Background" id="bg">
     <div class="container">
         <nav>
             <img src="Images/logo.png" class="logo">
-            <ul>
+            <ul id="sidemenu">
                 <li><a href="#header">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="work.html">Portfolio</a></li>
                 <li><a href="book.html">Book</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick()="closemenu"></i>
             </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
         </nav>
         <div class="header-text">
             <p>Computer Repair Technican and Aspiring Writer</p>
@@ -206,6 +209,19 @@ frequent and unique issues while documenting the work performed in order to educ
         })
       .catch(error => console.error('Error!', error.message))
   })
+</script>
+
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+
 </script>
 
 </body>
