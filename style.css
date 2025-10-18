@@ -11,13 +11,30 @@ body{
     background: #080808;
     color: #fff;
 }
-#header{
+#header {
+    position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url(Images/MainBG.png);
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
 }
+
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+.container, .logo, .header-text {
+    position: relative;
+    z-index: 1;
+}
+
 .container{
     padding: 10px 10%;
 }
@@ -66,7 +83,7 @@ nav ul li a:hover::after{
     width: 100%;
 }
 .header-text{
-    margin-top: 10%;
+    margin-top: 3%;
     font-size: 30px;
 }
 .header-text h1{
@@ -89,7 +106,8 @@ nav ul li a:hover::after{
     flex-basis: 35%;
 }
 .about-col-1 img{
-    width: 100%;
+    width: 150%;
+    height: auto;
     border-radius: 15px;
 }
 .about-col-2{
@@ -299,19 +317,6 @@ form .btn2{
     font-weight: 300;
     margin-top: 20px;
 }
-/*-----------CSS small screen-----------*/
-@media only screen and (max-width: 600px){
-    #header{
-        background-image: url(Images/phone-background.png);
-    }
-    .header-text{
-        margin-top: 100%;
-        font-size: 16px;
-    }
-    .header-text h1{
-        font-size: 30px;
-    }
-}
 #msg{
     color: #61b752;
     margin-top: -40px;
@@ -340,12 +345,23 @@ body.subpage.book-page{
     color: #fff;
 }
 
-.subpage nav{
+.subpage nav {
     width: 100%;
     height: 30vh;
     background-image: url(Images/VTBG.png);
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 3rem;
+}
+
+.subpage nav .logo {
+    width: 160px;      /* fixed pixel size — won’t scale with zoom */
+    height: auto;
+    flex-shrink: 0;
+    top: -20px;
 }
 
 .subpage nav ul {
@@ -392,20 +408,27 @@ body.subpage.book-page{
     gap: 60px; /* extra space between columns */
     margin-top: 40px;
 }
-#book .about-col-1 img {
-    max-height: 600px;   /* adjust this value to what looks best */
-    display: block;
-    margin-bottom: 20px; /* space between stacked images */
-    object-fit: contain; /* keeps full image visible */
-    flex: 1;
+/* give left and right the same fixed-ish base width and allow them to shrink */
+.about-col-1,
+.about-col-3 {
+    flex: 0 1 22%;       /* flex-grow:0, flex-shrink:1, flex-basis:22% */
+    box-sizing: border-box;
+    min-width: 160px;    /* prevents collapsing too small on tiny screens */
 }
-#book .about-col-3 img {
-    max-height: 600px;   /* adjust this value to what looks best */
+/* images scale to the column width, always match one another */
+.row-B img {
     display: block;
-    margin-bottom: 20px; /* space between stacked images */
-    object-fit: contain; /* keeps full image visible */
-    flex: 1;
+    width: 100%;
+    height: auto;        /* maintain aspect ratio */
+    object-fit: contain;
     border-radius: 15px;
+    max-width: 100%;
+}
+
+/* optional: limit the image's displayed height but proportional */
+.about-col-1 img,
+.about-col-3 img {
+    max-height: 60vh;    /* relative to viewport — shrinks when viewport/zoom changes */
 }
 .about-col-2 img {
     display: block;
@@ -429,4 +452,68 @@ body.subpage.book-page{
 }
 .highlight-link:hover {
     color: #FFD700;   /* gold on hover */
+}
+/***********Small Screen CSS***********/
+nav .fa-solid.fa-circle-xmark,.fa-solid.fa-bars{
+    display: none;
+}
+
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url(Images/WebBGMobile.png);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fas{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #B0007E;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.3s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2, .about-col-3{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        margin-bottom: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+    .copyright{
+        font-size: 14px;
+    }
 }
